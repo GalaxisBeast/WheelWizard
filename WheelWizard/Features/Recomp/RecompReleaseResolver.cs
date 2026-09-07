@@ -10,10 +10,12 @@ namespace WheelWizard.Recomp;
 /// </summary>
 public static class RecompReleaseResolver
 {
+    private const string AlternateSetupFileName = "WiiCompiled.Setup.exe";
+
     /// <summary>
     /// The owner of the recomp staging repository.
     /// </summary>
-    public const string RepositoryOwner = "patchzyy";
+    public const string RepositoryOwner = "GalaxisBeast";
 
     /// <summary>
     /// The name of the recomp staging repository.
@@ -39,6 +41,7 @@ public static class RecompReleaseResolver
 
             var asset = release.Assets.FirstOrDefault(candidate =>
                 string.Equals(candidate.Name, RecompSetupCommandBuilder.SetupFileName, StringComparison.OrdinalIgnoreCase)
+                || string.Equals(candidate.Name, AlternateSetupFileName, StringComparison.OrdinalIgnoreCase)
             );
             if (asset is null || string.IsNullOrWhiteSpace(asset.BrowserDownloadUrl))
                 continue;
